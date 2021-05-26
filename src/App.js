@@ -35,17 +35,20 @@ function App() {
     <>
       <Router>
         <Switch>
-          {localStorage.getItem("User") ? (
-            <Route path="/Home">
-              <Appbar cartlength={cartlength} />
-              <Home setcartlength={setcartlength} />
-            </Route>
-          ) : (
-            <Route path="/Login">
-              <Appbar cartlength={cartlength} />
-              <Login />
-            </Route>
-          )}
+          <Route path="/" exact>
+            {localStorage.getItem("User") ? (
+              <>
+                <Appbar cartlength={cartlength} />
+                <Home setcartlength={setcartlength} />
+              </>
+            ) : (
+              <>
+                <Appbar cartlength={cartlength} />
+                <Login />
+              </>
+            )}
+          </Route>
+
           <Route path="/Home">
             <Appbar cartlength={cartlength} />
             <Home setcartlength={setcartlength} />
